@@ -65,7 +65,7 @@ class _HomeState extends State<Home> {
                   Icons.scale,
                   color: Colors.black,
                 ),
-                title: const Text('BMI 측정기'),
+                title: const Text('BMI 계산기'),
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.of(context).pop();
@@ -121,7 +121,7 @@ class _HomeState extends State<Home> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(10.0),
-                        child: ElevatedButton(
+                        child: ElevatedButton.icon(
                           onPressed: () {
                             if (num1Cont.text.trim().isEmpty |
                                 num2Cont.text.trim().isEmpty) {
@@ -130,7 +130,10 @@ class _HomeState extends State<Home> {
                               showResult(context);
                             }
                           },
-                          child: const Text('계산하기'),
+                          icon: const Icon(
+                            Icons.calculate,
+                          ),
+                          label: const Text('계산하기'),
                         ),
                       ),
                       const SizedBox(
@@ -138,7 +141,7 @@ class _HomeState extends State<Home> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(10.0),
-                        child: ElevatedButton(
+                        child: ElevatedButton.icon(
                             onPressed: () {
                               num1Cont.text = "";
                               num2Cont.text = "";
@@ -155,7 +158,10 @@ class _HomeState extends State<Home> {
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.red,
                             ),
-                            child: const Text('초기화')),
+                            icon: const Icon(
+                              Icons.refresh,
+                            ),
+                            label: const Text('초기화')),
                       ),
                     ],
                   ),
@@ -171,7 +177,6 @@ class _HomeState extends State<Home> {
                               setState(() {
                                 addvalue = value;
                               });
-                              showResult(context);
                             },
                           ),
                         ],
@@ -186,7 +191,6 @@ class _HomeState extends State<Home> {
                               setState(() {
                                 subtvalue = value;
                               });
-                              showResult(context);
                             },
                           ),
                         ],
@@ -201,7 +205,6 @@ class _HomeState extends State<Home> {
                               setState(() {
                                 multvalue = value;
                               });
-                              showResult(context);
                             },
                           ),
                         ],
@@ -216,7 +219,6 @@ class _HomeState extends State<Home> {
                               setState(() {
                                 divvalue = value;
                               });
-                              showResult(context);
                             },
                           ),
                         ],
@@ -226,48 +228,60 @@ class _HomeState extends State<Home> {
                   const SizedBox(
                     height: 50,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      controller: addCont,
-                      decoration: const InputDecoration(
-                        labelText: '덧셈 결과',
+                  Visibility(
+                    visible: addvalue,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextField(
+                        controller: addCont,
+                        decoration: const InputDecoration(
+                          labelText: '덧셈 결과',
+                        ),
+                        keyboardType: TextInputType.number,
+                        readOnly: true,
                       ),
-                      keyboardType: TextInputType.number,
-                      readOnly: true,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      controller: subtCont,
-                      decoration: const InputDecoration(
-                        labelText: '뺄셈 결과',
+                  Visibility(
+                    visible: subtvalue,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextField(
+                        controller: subtCont,
+                        decoration: const InputDecoration(
+                          labelText: '뺄셈 결과',
+                        ),
+                        keyboardType: TextInputType.number,
+                        readOnly: true,
                       ),
-                      keyboardType: TextInputType.number,
-                      readOnly: true,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      controller: multCont,
-                      decoration: const InputDecoration(
-                        labelText: '곱셈 결과',
+                  Visibility(
+                    visible: multvalue,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextField(
+                        controller: multCont,
+                        decoration: const InputDecoration(
+                          labelText: '곱셈 결과',
+                        ),
+                        keyboardType: TextInputType.number,
+                        readOnly: true,
                       ),
-                      keyboardType: TextInputType.number,
-                      readOnly: true,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      controller: divCont,
-                      decoration: const InputDecoration(
-                        labelText: '나눗셈 결과',
+                  Visibility(
+                    visible: divvalue,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextField(
+                        controller: divCont,
+                        decoration: const InputDecoration(
+                          labelText: '나눗셈 결과',
+                        ),
+                        keyboardType: TextInputType.number,
+                        readOnly: true,
                       ),
-                      keyboardType: TextInputType.number,
-                      readOnly: true,
                     ),
                   ),
                 ],
@@ -282,11 +296,22 @@ class _HomeState extends State<Home> {
   // Date: 2022-12-14
   errorSnackBar(BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text(
-          '숫자를 입력하세요',
+      SnackBar(
+        content: Row(
+          children: const [
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+              child: Icon(
+                Icons.warning_amber,
+                color: Colors.white,
+              ),
+            ),
+            Text(
+              '숫자를 입력하세요',
+            ),
+          ],
         ),
-        duration: Duration(seconds: 1),
+        duration: const Duration(seconds: 1),
         backgroundColor: Colors.red,
       ),
     );
