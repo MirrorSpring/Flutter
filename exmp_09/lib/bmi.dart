@@ -162,7 +162,7 @@ class _BMIState extends State<BMI> {
                         ),
                       ),
                       const SizedBox(
-                        width: 20,
+                        width: 30,
                       ),
                       Padding(
                         padding: const EdgeInsets.all(10.0),
@@ -264,7 +264,7 @@ class _BMIState extends State<BMI> {
             Padding(
               padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
               child: Icon(
-                Icons.warning_amber,
+                Icons.error_outline,
                 color: Colors.white,
               ),
             ),

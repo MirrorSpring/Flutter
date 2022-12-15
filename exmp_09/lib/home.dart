@@ -302,7 +302,7 @@ class _HomeState extends State<Home> {
             Padding(
               padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
               child: Icon(
-                Icons.warning_amber,
+                Icons.error_outline,
                 color: Colors.white,
               ),
             ),
