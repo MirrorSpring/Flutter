@@ -20,8 +20,10 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Count Up & Down',
+        title: const Center(
+          child: Text(
+            'Counter',
+          ),
         ),
         backgroundColor: Colors.yellow,
         foregroundColor: Colors.black,
@@ -36,7 +38,7 @@ class _HomeState extends State<Home> {
                 Text(
                   '$count',
                   style: const TextStyle(
-                    fontSize: 60,
+                    fontSize: 100,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -48,35 +50,50 @@ class _HomeState extends State<Home> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FloatingActionButton(
-                  onPressed: () {
-                    setState(() {
-                      count++;
-                    });
-                  },
-                  child: const Icon(Icons.add),
+                SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        count++;
+                      });
+                    },
+                    child: const Icon(
+                      Icons.add,
+                      size: 40,
+                    ),
+                  ),
                 ),
                 const SizedBox(
-                  width: 20,
+                  width: 50,
                 ),
-                FloatingActionButton(
-                  onPressed: () {
-                    setState(() {
-                      if (count > 0) {
-                        count--;
-                      } else {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(const SnackBar(
-                          content: Text('숫자는 음수가 될 수 없습니다.'),
-                          duration: Duration(milliseconds: 1000),
-                          backgroundColor: Colors.red,
-                          
-                        ));
-                      }
-                    });
-                  },
-                  backgroundColor: Colors.red,
-                  child: const Icon(Icons.remove),
+                SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        if (count > 0) {
+                          count--;
+                        } else {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content: Text('숫자는 음수가 될 수 없습니다.'),
+                            duration: Duration(milliseconds: 1000),
+                            backgroundColor: Colors.red,
+                          ));
+                        }
+                      });
+                    },
+                    child: const Icon(
+                      Icons.remove,
+                      size: 40,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -86,14 +103,23 @@ class _HomeState extends State<Home> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FloatingActionButton(
-                  onPressed: () {
-                    setState(() {
-                      _showDialog(context);
-                    });
-                  },
-                  backgroundColor: Colors.green,
-                  child: const Icon(Icons.refresh),
+                SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _showDialog(context);
+                      });
+                    },
+                    child: const Icon(
+                      Icons.refresh,
+                      size: 40,
+                    ),
+                  ),
                 ),
               ],
             ),
