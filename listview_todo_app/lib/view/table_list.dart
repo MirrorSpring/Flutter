@@ -32,7 +32,10 @@ class _TableListState extends State<TableList> {
         actions: [
           IconButton(
             onPressed: () {
-              //--
+              Navigator.pushNamed(
+                context,
+                '/insert',
+              ).then((value) => rebuildData());
             },
             icon: const Icon(
               Icons.add_outlined,
@@ -46,14 +49,14 @@ class _TableListState extends State<TableList> {
           itemBuilder: (context, position) {
             return GestureDetector(
               onTap: () {
-                Message.workList=todoList[position].workList;
-                Message.imagePath=todoList[position].imagePath;
+                Message.workList = todoList[position].workList;
+                Message.imagePath = todoList[position].imagePath;
                 Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const DetailList(),
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const DetailList(),
                   ),
-              );
+                );
               },
               child: Card(
                 child: Row(
@@ -78,5 +81,16 @@ class _TableListState extends State<TableList> {
         ),
       ),
     );
+  }
+
+  //Functions
+  rebuildData() {
+    if (Message.isnew == true) {
+      setState(() {
+        todoList.add(
+            TodoList(imagePath: Message.imagePath, workList: Message.workList));
+      });
+      Message.isnew = false;
+    }
   }
 }
