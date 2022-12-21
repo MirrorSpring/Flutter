@@ -1,0 +1,7 @@
+앱 아이콘 설정법
+
+1. appicon.co에서 앱 아이콘 이미지 생성
+
+2.
+안드로이드: android/app/res에 덮어쓰기
+아이폰: ios/Runner/Assets.xcassets에 덮어쓰기
