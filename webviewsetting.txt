@@ -1,0 +1,4 @@
+AndroidManifest.xml의 6번째 줄 아래에 android:usesCleartextTraffic="true"
+
+build.gradle의 29번째 줄 compileSdkVersion 32
+50번째 줄 minSdkVersion 19
