@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
@@ -11,14 +14,13 @@ class InsertView extends StatefulWidget {
 
 class _InsertViewState extends State<InsertView> {
   late TextEditingController nameCont;
-  late TextEditingController contentCont;
+  late TextEditingController addressCont;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     nameCont=TextEditingController();
-    contentCont=TextEditingController();
+    addressCont=TextEditingController();
   }
 
   @override
@@ -38,7 +40,7 @@ class _InsertViewState extends State<InsertView> {
               child: TextField(
                 controller: nameCont,
                 decoration: const InputDecoration(
-                  hintText: "작성자",
+                  hintText: "이름",
                 ),
               ),
             ),
@@ -48,9 +50,9 @@ class _InsertViewState extends State<InsertView> {
             SizedBox(
               width: 300,
               child: TextField(
-                controller: nameCont,
+                controller: addressCont,
                 decoration: const InputDecoration(
-                  hintText: "내용",
+                  hintText: "주소",
                 ),
               ),
             ),
@@ -59,7 +61,8 @@ class _InsertViewState extends State<InsertView> {
             ),
             ElevatedButton(
               onPressed: () {
-                
+                _insert();
+                Navigator.pop(context);
               },
               child: const Text(
                 '입력',
@@ -69,5 +72,12 @@ class _InsertViewState extends State<InsertView> {
         ),
       )
     );
+  }
+
+  _insert() async {
+
+    var url = Uri.parse(
+        'http://192.168.10.213:8080/InsertDao?name=${nameCont.text}&address=${addressCont.text}');
+    await http.get(url);
   }
 }
