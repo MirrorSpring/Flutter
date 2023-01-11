@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>117330126935-ids8te26q9ijdu1rk0q0370cdeh16hoh.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.117330126935-ids8te26q9ijdu1rk0q0370cdeh16hoh</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBziU7VA8KbzSQ5REJ5yTP6QVuoLZ8A3uU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>117330126935</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.chessApp</string>
+	<key>PROJECT_ID</key>
+	<string>fir-9cf1b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fir-9cf1b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:117330126935:ios:4a93fdbcf1c4825412db12</string>
+	<key>DATABASE_URL</key>
+	<string>https://fir-9cf1b-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+</dict>
+</plist>
