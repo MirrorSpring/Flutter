@@ -146,7 +146,7 @@ class _HomeState extends State<Home> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: null,
+          backgroundColor: Colors.transparent,
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: const [
